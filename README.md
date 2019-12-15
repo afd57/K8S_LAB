@@ -25,3 +25,15 @@ To access the Kubernetes Dashboard, run this command in a shell after starting M
 $ minikube dashboard
 
 ```
+
+## To Use Local Image 
+
+1) You have to run eval $(minikube docker-env)
+2) Build the image with the Docker daemon of Minikube
+
+```sh
+$ docker build -t collection .
+
+```
+
+Note: If you don't follow this step, you will get "Failed to pull image " error message

@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-demo
+spec:
+  containers:
+  - name: hello-container
+    image: localhost:5000/hello-image:0.1
+  # These containers are run during pod initialization
+  initContainers:
+  - name: migration
+    image: localhost:5000/hello-image:0.1
+    command:
+    - python
+    - "/opt/src/migration.py"
+  dnsPolicy: Default
+  volumes:
+  - name: workdir
+    emptyDir: {}
+
