@@ -35,5 +35,16 @@ $ minikube dashboard
 $ docker build -t collection .
 
 ```
+https://stackoverflow.com/questions/42564058/how-to-use-local-docker-images-with-minikube
+
 
 Note: If you don't follow this step, you will get "Failed to pull image " error message
+
+
+## Ingress in Minicube
+
+https://www.bogotobogo.com/DevOps/Docker/Docker_Kubernetes_Nginx_Ingress_Controller.php
+
+```sh
+$ minikube addons enable ingress
+```
