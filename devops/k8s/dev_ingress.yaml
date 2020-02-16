@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: dev-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: \"false\"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'false'
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /dev(/|$)(.*)
+        backend:
+          serviceName: dev-dep
+          servicePort: 80

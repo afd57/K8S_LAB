@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dev-dep
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8000
+  selector:
+    app: dev-dep
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-dep
+  template:
+    metadata:
+      labels:
+        app: dev-dep
+    spec:
+      containers:
+      - name: hello-kubernetes
+        image: hello-aziz-img
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
+        env:
+        - name: type
+          value: "dev_dep"
